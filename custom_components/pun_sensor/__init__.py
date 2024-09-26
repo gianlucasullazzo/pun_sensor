@@ -92,6 +92,10 @@ async def update_listener(hass: HomeAssistant, config: ConfigEntry) -> None:
     coordinator = hass.data[DOMAIN][config.entry_id]
 
     # Aggiorna le impostazioni del coordinator dalle opzioni
+    if config.options[CONF_PZO_ZONE] != coordinator.pzo_zone:
+        coordinator.pzo_zone = config.options[CONF_PZO_ZONE]
+
+    # Aggiorna le impostazioni del coordinator dalle opzioni
     if config.options[CONF_SCAN_HOUR] != coordinator.scan_hour:
         # Modificata l'ora di scansione
         coordinator.scan_hour = config.options[CONF_SCAN_HOUR]
@@ -148,7 +152,7 @@ class PUNDataUpdateCoordinator(DataUpdateCoordinator):
         # Inizializza i valori di configurazione (dalle opzioni o dalla configurazione iniziale)
         self.actual_data_only = config.options.get(CONF_ACTUAL_DATA_ONLY, config.data[CONF_ACTUAL_DATA_ONLY])
         self.scan_hour = config.options.get(CONF_SCAN_HOUR, config.data[CONF_SCAN_HOUR])
-        self.pzo_zone = config.options[CONF_PZO_ZONE]
+        self.pzo_zone = config.options.get(CONF_PZO_ZONE, config.data[CONF_PZO_ZONE])
 
         # Inizializza i valori di default
         self.web_retries = 0
