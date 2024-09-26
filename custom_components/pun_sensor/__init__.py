@@ -35,6 +35,7 @@ from .const import (
     PZO,
     CONF_SCAN_HOUR,
     CONF_ACTUAL_DATA_ONLY,
+    CONF_PZO_ZONE,
     COORD_EVENT,
     EVENT_UPDATE_FASCIA,
     EVENT_UPDATE_PUN
@@ -147,6 +148,7 @@ class PUNDataUpdateCoordinator(DataUpdateCoordinator):
         # Inizializza i valori di configurazione (dalle opzioni o dalla configurazione iniziale)
         self.actual_data_only = config.options.get(CONF_ACTUAL_DATA_ONLY, config.data[CONF_ACTUAL_DATA_ONLY])
         self.scan_hour = config.options.get(CONF_SCAN_HOUR, config.data[CONF_SCAN_HOUR])
+        self.pzo_zone = config.options[CONF_PZO_ZONE]
 
         # Inizializza i valori di default
         self.web_retries = 0
@@ -260,7 +262,7 @@ class PUNDataUpdateCoordinator(DataUpdateCoordinator):
                 prezzo = float(prezzo_string) / 1000
 
                 # Estrae il prezzo zonale orario nord dall'XML in un float
-                pzo_string = prezzi.find('NORD').text
+                pzo_string = prezzi.find(self.pzo_zone).text
                 pzo_string = pzo_string.replace('.','').replace(',','.')
                 pzo_float = float(pzo_string) / 1000
 

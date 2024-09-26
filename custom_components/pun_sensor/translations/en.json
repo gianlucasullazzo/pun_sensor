@@ -5,7 +5,8 @@
         "title": "PUN scraping settings",
         "data": {
           "scan_hour": "Web download start hour (0-23)",
-          "actual_data_only": "Use only real data at month start"
+          "actual_data_only": "Use only real data at month start",
+          "pzo_zone": "PZO Zone"
         }
       }
     },
@@ -22,7 +23,8 @@
         "title": "Edit PUN scraping settings",
         "data": {
           "scan_hour": "Web download start hour (0-23)",
-          "actual_data_only": "Use only real data at month start"
+          "actual_data_only": "Use only real data at month start",
+          "pzo_zone": "PZO Zone"
         }
       }
     }

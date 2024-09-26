@@ -7,6 +7,7 @@ from .const import (
     DOMAIN,
     CONF_SCAN_HOUR,
     CONF_ACTUAL_DATA_ONLY,
+    CONF_PZO_ZONE
 )
 
 class PUNOptionsFlow(config_entries.OptionsFlow):
@@ -30,6 +31,7 @@ class PUNOptionsFlow(config_entries.OptionsFlow):
         data_schema = {
             vol.Required(CONF_SCAN_HOUR, default=self.config_entry.options.get(CONF_SCAN_HOUR, self.config_entry.data[CONF_SCAN_HOUR])): vol.All(cv.positive_int, vol.Range(min=0, max=23)),
             vol.Optional(CONF_ACTUAL_DATA_ONLY, default=self.config_entry.options.get(CONF_ACTUAL_DATA_ONLY, self.config_entry.data[CONF_ACTUAL_DATA_ONLY])): cv.boolean,
+            vol.Required(CONF_PZO_ZONE, default=self.config_entry.options.get(CONF_PZO_ZONE, self.config_entry.data[CONF_PZO_ZONE])): cs.string,
         }
 
         # Mostra la schermata di configurazione, con gli eventuali errori
@@ -67,6 +69,7 @@ class PUNConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         data_schema = {
             vol.Required(CONF_SCAN_HOUR, default=1): vol.All(cv.positive_int, vol.Range(min=0, max=23)),
             vol.Optional(CONF_ACTUAL_DATA_ONLY, default=False): cv.boolean,
+            vol.Optional(CONF_PZO_ZONE, default="NORD"): cv.string,
         }
 
         # Mostra la schermata di configurazione, con gli eventuali errori

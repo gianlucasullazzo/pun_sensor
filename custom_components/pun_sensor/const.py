@@ -17,3 +17,4 @@ EVENT_UPDATE_PUN = "event_update_pun"
 # Parametri configurabili da configuration.yaml
 CONF_SCAN_HOUR = "scan_hour"
 CONF_ACTUAL_DATA_ONLY = "actual_data_only"
+CONF_PZO_ZONE = "pzo_zone"

@@ -181,6 +181,8 @@ class PUNSensorEntity(CoordinatorEntity, SensorEntity, RestoreEntity):
             return "PUN mono-orario"
         elif (self.tipo == PUN_FASCIA_F23):
             return "PUN fascia F23"
+        elif (self.tipo == PZO):
+            return "Prezzo Zonale Orario"
         else:
             return None
 

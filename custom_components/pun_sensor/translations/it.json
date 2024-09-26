@@ -5,7 +5,8 @@
         "title": "Impostazioni scraping PUN",
         "data": {
           "scan_hour": "Ora inizio download dati (0-23)",
-          "actual_data_only": "Usa solo dati reali ad inizio mese"
+          "actual_data_only": "Usa solo dati reali ad inizio mese",
+          "pzo_zone": "Zona del prezzo zonale orario"
         }
       }
     },
@@ -22,7 +23,8 @@
         "title": "Modifica impostazioni scraping PUN",
         "data": {
           "scan_hour": "Ora inizio download dati (0-23)",
-          "actual_data_only": "Usa solo dati reali ad inizio mese"
+          "actual_data_only": "Usa solo dati reali ad inizio mese",
+          "pzo_zone": "Zona del prezzo zonale orario"
         }
       }
     }
