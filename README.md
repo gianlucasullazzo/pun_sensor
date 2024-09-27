@@ -5,7 +5,7 @@
 [![Validate](https://github.com/virtualdj/pun_sensor/actions/workflows/validate.yaml/badge.svg?branch=master)](https://github.com/virtualdj/pun_sensor/actions/workflows/validate.yaml)
 [![release](https://img.shields.io/github/v/release/virtualdj/pun_sensor?style=flat-square)](https://github.com/virtualdj/pun_sensor/releases)
 
-Integrazione per **Home Assistant** (basata sullo script [pun-fasce](https://github.com/virtualdj/pun-fasce)) che mostra i prezzi stimati del mese corrente per fasce orarie (F1, F2 e F3 e mono-oraria) nonché la fascia oraria attuale.
+Integrazione per **Home Assistant** (basata sullo script [pun-fasce](https://github.com/virtualdj/pun-fasce)) che mostra i prezzi stimati del mese corrente per fasce orarie (F1, F2 e F3 e mono-oraria) nonché la fascia oraria attuale e il prezzo zonale orario.
 
 I valori vengono scaricati dal sito [MercatoElettrico.org](https://www.mercatoelettrico.org/It/Default.aspx) per l'intero mese e viene calcolata la media per fasce giorno per giorno, in questo modo verso la fine del mese il valore mostrato si avvicina sempre di più al prezzo reale del PUN in bolletta (per i contratti a prezzo variabile).
 
@@ -19,11 +19,35 @@ Installare **manualmente** clonando o copiando questa repository e poi copiando 
 
 Dopo l'aggiunta dell'integrazione oppure cliccando il pulsante _Configurazione_ nelle impostazioni di Home Assistant, verrà visualizzata questa finestra:
 
-![Screenshot impostazioni](screenshots_settings.png "Impostazioni")
+![image](https://github.com/user-attachments/assets/87e3945a-9ed3-421f-af73-292a23d79b3e)
 
 Qui è possibile selezionare un'ora del giorno in cui scaricare i prezzi aggiornati dell'energia (default: 1). Nel caso il sito non fosse raggiungibile, verranno effettuati altri tentativi dopo 10, 60, 120 e 180 minuti.
 
 Se la casella di controllo _Usa solo dati reali ad inizio mese_ è **attivata**, all'inizio del mese quando non ci sono i prezzi per tutte le fasce orarie questi vengono disabilitati (non viene mostrato quindi un prezzo in €/kWh finché i dati non sono in numero sufficiente); nel caso invece la casella fosse **disattivata** (default) nel conteggio vengono inclusi gli ultimi giorni del mese precedente in modo da avere sempre un valore in €/kWh.
+
+I valori per le zone sono:
+- NAT
+- CALA
+- CNOR
+- CSUD
+- NORD
+- SARD
+- SICI
+- SUD
+- AUST
+- COAC
+- COUP
+- CORS
+- FRAN
+- GREC
+- SLOV
+- SVIZ
+- BSP
+- MALT
+- XAUS
+- XFRA
+- MONT
+- XGRE
 
 ### Aggiornamento manuale
 
@@ -31,7 +55,8 @@ Se la casella di controllo _Usa solo dati reali ad inizio mese_ è **attivata**,
 
 ### Aspetto dei dati
 
-![Screenshot integrazione](screenshots_main.png "Dati visualizzati")
+![image](https://github.com/user-attachments/assets/33bb5bb4-e3bb-40b6-8fec-93cd1ff262c4)
+
 
 L'integrazione fornisce il nome della fascia corrente relativa all'orario di Home Assistant (tra F1 / F2 / F3), i prezzi delle tre fasce F1 / F2 / F3 più la fascia mono-oraria e il prezzo della fascia corrente.
 
